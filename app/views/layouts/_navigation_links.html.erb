@@ -1,0 +1,13 @@
+<%# add navigation links to this file %>
+<% if user_signed_in? %>
+    <%= link_to 'Home', root_path, class: 'navbar-brand'  %>
+    <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+    <li><%= link_to 'Settings', edit_user_registration_path %></li>
+<% else %>
+    <% if request.url.include? "sign_in"%>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+    <% else %>
+        <li><%= link_to 'Sign in', user_session_path %></li>
+    <% end %>
+<% end %>
+
