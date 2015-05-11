@@ -6,6 +6,7 @@ class SearchController < ApplicationController
   def artist
     @artist_details_json = {}
     val = params[:search_string]
+
     @is_error = false
     data = getArtistDetails(val)
     @JSON_ARRAY_LIMIT = 10

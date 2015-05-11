@@ -10,7 +10,8 @@ class HistoryController < ApplicationController
     logger.info cpage
     @records = Srecord.where(:user_id => current_user.id)
     if(@records.count > 0)
-      pageCount = (10 % @records.count)
+      pageCount = @records.count / 10
+      pageCount = pageCount.ceil
     else
       pageCount = -1
     end
