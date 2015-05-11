@@ -1,6 +1,193 @@
+<div ng-init="init()" ng-controller="MyController" >
 
-<h3>Welcome</h3>
-<div ng-app="myapp">
-  <input type="text" ng-model="name">
-  <div>{{name}}</div>
+
+  <div class="container search-container" align="center">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" id = "search-artist"class="form-control input-lg" placeholder="Search for artist" />
+                <span class="input-group-btn">
+                    <button id="sbut" ng-click="artistData.doClick(item, $event)" class="btn btn-info btn-lg" id = "search" type="button">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container history-view " xmlns="http://www.w3.org/1999/html">
+
+
+    <div class="container view-holder">
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>History</h1>
+
+
+          <!-- Carousel items -->
+
+
+          <div class="item active" >
+            <div class="row">
+
+              <div ng-repeat = "artist in historyData" class="col-sm-3 col-sm-3 ari-holder">
+                <div class="panel panel-default">
+                  <div class="panel-heading" align="center">{{artist.search_string}}</div>
+                  <div class="panel-body history-panel-body">
+                    <a ng-href="{{ artist.artistprofile }}" target="_blank">
+
+                      <img id="artistpic" class="img-responsive img-portfolio img-hover history_artist_image_even" ng-src="{{artist.artistimage}}" alt="">
+
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <!--/myCarousel-->
+
+        </div>
+        <!--/well-->
+      </div>
+      <div class="row">
+        <button id="more_button"  ng-click="moreData.g(item,$event);" class="btn lg cta btn-danger">More</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container load-view">
+    <div class="container view-holder">
+    </div>
+  </div>
+
+  <div class="container artist-view">
+
+    <div class="container view-holder">
+
+
+      <!-- Features Section -->
+      <div class="row">
+
+        <div class="col-md-6 col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading" align="center">{{artistData.name}}</div>
+            <div class="panel-body">
+              <a ng-href = "{{artistData.url}}" target="_blank">
+
+                <img id="artistpic" class="img-responsive img-portfolio img-hover" ng-src="{{artistData.image}}" alt="">
+
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-sm-6">
+
+          <h2>Album</h2>
+          <div class="table-responsive scroll_wrap">
+
+
+            <table class="table">
+              <tbody>
+
+
+              <tr ng-repeat="album in artistData.albums">
+                <td>
+                  <a ng-href="{{album.url}}" target="_blank">
+
+                    <img  class="img-responsive img-portfolio img-hover album-image pull-left" ng-src="{{album.albumimage}}" alt="">
+                    {{ album.name}}
+                  </a>
+                </td>
+
+              </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <ol class="breadcrumb">
+
+        <li ng-repeat="tag in artistData.tags"><a ng-href="{{tag.url}}"  target="_blank" >{{ tag.name }} <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span></a></li>
+
+      </ol>
+
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Similar Artist</h1>
+
+          <div class="well-none">
+
+            <div id="albumScroller" class="carousel slide">
+              <!-- Carousel items -->
+
+              <div class="carousel-inner">
+                <div class="item active" >
+                  <div class="row">
+
+
+                    <div ng-repeat = "artist in artistData.similar_artist" class="col-sm-3 col-xs-6">
+                      <a ng-href="{{artist.url}}" target="_blank" class="thumbnail"><img  class="img-responsive backup_picture" ng-src="{{artist.artistimage}}"  > {{artist.name}}</a>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <!--/myCarousel-->
+          </div>
+        </div>
+        <!--/well-->
+      </div>
+
+
+
+
+
+      <!-- Footer -->
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; AdWyze assignment</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="container no-result-view">
+    <div class="container view-holder">
+      Sorry !!! No results
+    </div>
+  </div>
+
+  <div class="container error-view">
+    <div class="container view-holder">
+    </div>
+  </div>
+
 </div>
