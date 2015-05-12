@@ -85,6 +85,7 @@ angular.module("myApp", []).controller("MyController", function($scope, $http) {
 
         if(!$("#search-artist").val().match(/^\s*$/) ) {
 
+            $(".no-result-view").hide();
             $(".artist-view").hide();
             $(".history-view").hide();
             $(".load-view").show();
