@@ -22,7 +22,7 @@ class HistoryController < ApplicationController
       from_index = cpage*10
       sub_array = @records[from_index , 10]
 
-      history_hash = {'history' => sub_array , 'cpage' => cpage }
+      history_hash = {'history' => sub_array , 'cpage' => cpage , 'pagecount' => pageCount}
 
 
 

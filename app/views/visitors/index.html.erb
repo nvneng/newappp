@@ -69,6 +69,7 @@
 
   <div class="container load-view">
     <div class="container view-holder">
+      Loading ...
     </div>
   </div>
 
@@ -85,8 +86,7 @@
             <div class="panel-heading" align="center">{{artistData.name}}</div>
             <div class="panel-body">
               <a ng-href = "{{artistData.url}}" target="_blank">
-
-                <img id="artistpic" class="img-responsive img-portfolio img-hover" ng-src="{{artistData.image}}" alt="">
+                <img id="artistpic" class="img-responsive img-portfolio img-hover" ng-src="{{artistData.image}}"  onerror="if (this.src != 'http://i61.tinypic.com/2mwdtsk.png') this.src = 'http://i61.tinypic.com/2mwdtsk.png';">
 
               </a>
             </div>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="col-md-6 col-sm-6">
-
+        <div id="album-holder">
           <h2>Album</h2>
           <div class="table-responsive scroll_wrap">
 
@@ -119,13 +119,14 @@
             </table>
 
           </div>
+          </div>
         </div>
 
 
       </div>
 
 
-      <ol class="breadcrumb">
+      <ol id="#tag-holder"class="breadcrumb">
 
         <li ng-repeat="tag in artistData.tags"><a ng-href="{{tag.url}}"  target="_blank" >{{ tag.name }} <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span></a></li>
 
@@ -135,7 +136,8 @@
 
 
       <div class="row">
-        <div class="col-md-12">
+        <div id="similar-artist-holder" class="col-md-12">
+
           <h1>Similar Artist</h1>
 
           <div class="well-none">
@@ -163,25 +165,12 @@
         </div>
         <!--/well-->
       </div>
-
-
-
-
-
-      <!-- Footer -->
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; AdWyze assignment</p>
-          </div>
-        </div>
-      </footer>
     </div>
   </div>
 
   <div class="container no-result-view">
     <div class="container view-holder">
-      Sorry !!! No results
+      No results!!!
     </div>
   </div>
 

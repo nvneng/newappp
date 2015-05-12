@@ -31,11 +31,15 @@ class SearchController < ApplicationController
     end
 
     begin
+
       @artist_pic = artist_info['image'][3]['#text'];
-      @artist_details_json.store(:image, @artist_pic)
+      if (check_if_url_is_valid(@artist_pic) == false)
+        @artist_pic = "http://i61.tinypic.com/2mwdtsk.png"
+      end
     rescue StandardError
-      @artist_details_json.store(:image, 'backup image')
+      @artist_pic =  'http://i61.tinypic.com/2mwdtsk.png'
     end
+    @artist_details_json.store(:image, @artist_pic)
 
     begin
       @artist_link = artist_info['url'];
@@ -117,4 +121,16 @@ class SearchController < ApplicationController
     end
   end
 
+  def check_if_url_is_valid(image_url)
+    url = URI.parse(image_url)
+    req = Net::HTTP.new(url.host, url.port)
+    res = req.request_head(url.path)
+
+    if res.code == "200"
+      return true
+    else
+      return false
+    end
+
+  end
 end
